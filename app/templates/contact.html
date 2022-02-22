@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block main %}
+    <form method="Post" action="{{ url_for('contact') }}">
+        {{ form.csrf_token }}
+        <h1>Contact Form</h1>
+        <hr>
+        <div>Fill in this form to contact the site owners.</div>
+        <div class="my-3 col-4">
+            <label class="form-label fw-bold">{{ form.name.label }} <span class="text-danger fw-bold">(Required)</span></label>
+            <div class="mb-3">{{ form.name.description }} </div>
+            {{form.name(class_="form-control")}}
+        </div>
+        <div class="mb-3 col-4">
+            <label class="form-label fw-bold">{{ form.email.label }} <span class="text-danger fw-bold">(Required)</span></label>
+            <div class="mb-3">{{ form.email.description }}</div>
+            {{form.email(class_="form-control")}}
+        </div>
+        <div class="mb-3 col-4">
+            <label class="form-label fw-bold">{{ form.subject.label }} <span class="text-danger fw-bold">(Required)</span></label>
+            <div class="mb-3">{{ form.subject.description }}</div>
+            {{ form.subject(class_="form-control")}}
+        </div>
+        <div class="mb-3 col-5">
+            <label class="form-label fw-bold">{{ form.message.label }} <span class="text-danger fw-bold">(Required)</span></label>
+            <div class="mb-3">{{ form.message.description }}</div>
+            {{ form.message(class_="form-control py-4")}}
+        </div>
+        <button type="submit" class="btn btn-primary p-2 px-4">Send</button>
+    </form>
+{% endblock %}
